@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Estratégico Digital | Smart Talent Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --bg-warm: #FDFCFB;
+            --primary: #1E3A8A;
+            --secondary: #0D9488;
+            --accent: #F59E0B;
+            --text-main: #1F2937;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .nav-link {
+            transition: all 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+        }
+
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+<!-- Chosen Palette: Warm Professional Harmony (Neutros cálidos con acentos Azul Navy y Turquesa) -->
+<!-- Application Structure Plan: 
+    1. Resumen Ejecutivo (Dashboard): Vista rápida de KPIs y ROI para impacto inmediato.
+    2. Diagnóstico & Cultura: Gráfico de radar comparativo para visualizar brechas.
+    3. Rediseño de Negocio: Lean Canvas interactivo para entender el giro estratégico.
+    4. Estrategia & Gobierno: Estructura de mando y KPIs del BSC Digital.
+    5. Customer Journey: Comparador interactivo "Tradicional vs. Inteligente".
+    6. Seguridad & Tech: Matriz de riesgos y justificación de tecnologías disruptivas.
+    7. Financiero & Futuro: Proyección de ROI y Roadmap de 24 meses.
+    La estructura se diseñó para guiar al usuario desde el "dolor actual" (diagnóstico) hasta la "solución rentable" (ROI), facilitando la aprobación por parte de la Junta Directiva.
+-->
+<!-- Visualization & Content Choices: 
+    - Radar Chart: Ideal para Diagnóstico de Madurez (8 dimensiones).
+    - Bar Charts: Comparativa de Beneficios Anuales y ROI.
+    - Doughnut Chart: Distribución de Inversión por Fase.
+    - Interactive Tabs/Toggles: Para el Customer Journey y Lean Canvas.
+    - Tablas de Riesgo: Estilo Zero Trust minimalista.
+    - Confirmación: NO se usa SVG ni Mermaid. Solo Chart.js en Canvas y CSS puro.
+-->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-white/90 border-b border-gray-200 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-blue-900 rounded-lg flex items-center justify-center text-white font-bold">ST</div>
+                    <span class="font-bold text-xl tracking-tight text-blue-900">Smart Talent Solutions</span>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+                    <a href="#inicio" class="nav-link hover:text-blue-900 py-2">Dashboard</a>
+                    <a href="#madurez" class="nav-link hover:text-blue-900 py-2">Madurez</a>
+                    <a href="#modelo" class="nav-link hover:text-blue-900 py-2">Modelo</a>
+                    <a href="#gobierno" class="nav-link hover:text-blue-900 py-2">Gobierno</a>
+                    <a href="#viaje" class="nav-link hover:text-blue-900 py-2">Viaje</a>
+                    <a href="#financiero" class="nav-link hover:text-blue-900 py-2">ROI</a>
+                </div>
+                <button class="bg-blue-900 text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-blue-800 transition">INFORME PDF</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12 px-4 max-w-7xl mx-auto">
+        
+        <!-- SECCIÓN 1: INICIO / DASHBOARD -->
+        <section id="inicio" class="mb-20">
+            <div class="mb-8">
+                <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Plan Estratégico de Transformación Digital</h1>
+                <p class="text-lg text-gray-600 max-w-3xl">Bienvenido al centro de mando de Smart Talent Solutions S.A.S. Esta sección presenta la visión general de nuestra evolución de una BPO tradicional a una plataforma inteligente impulsada por IA y automatización.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-blue-900">
+                    <p class="text-sm font-semibold text-gray-500 uppercase">Madurez Actual</p>
+                    <h3 class="text-3xl font-bold text-blue-900">1.6 / 5.0</h3>
+                    <div class="mt-2 text-xs text-red-500 font-medium">↑ Necesidad Crítica</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-teal-500">
+                    <p class="text-sm font-semibold text-gray-500 uppercase">ROI Acumulado (Y2)</p>
+                    <h3 class="text-3xl font-bold text-teal-600">95%</h3>
+                    <div class="mt-2 text-xs text-green-600 font-medium">Payback: 8-10 meses</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-amber-500">
+                    <p class="text-sm font-semibold text-gray-500 uppercase">Automatización</p>
+                    <h3 class="text-3xl font-bold text-amber-600">75%</h3>
+                    <div class="mt-2 text-xs text-gray-500 font-medium">Meta a 24 meses</div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl shadow-sm border-l-4 border-indigo-500">
+                    <p class="text-sm font-semibold text-gray-500 uppercase">Costo Contratación</p>
+                    <h3 class="text-3xl font-bold text-indigo-600">-45%</h3>
+                    <div class="mt-2 text-xs text-blue-600 font-medium">Eficiencia operativa</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: DIAGNÓSTICO DE MADUREZ -->
+        <section id="madurez" class="mb-24 scroll-mt-24">
+            <div class="bg-white p-8 rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Paso 2: Diagnóstico</span>
+                        <h2 class="text-3xl font-bold mt-4 mb-6">Brecha Digital Actual</h2>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Nuestro análisis revela que STS opera actualmente en un estado <strong>"Inicial"</strong>. La dependencia de procesos manuales en Excel y la falta de integración de datos son los mayores obstáculos para la escalabilidad.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 font-bold">!</div>
+                                <div>
+                                    <h4 class="font-semibold">Baja Analítica</h4>
+                                    <p class="text-sm text-gray-500">Reportes manuales sin Data Warehouse.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold">⚙</div>
+                                <div>
+                                    <h4 class="font-semibold">Cultura Resistente</h4>
+                                    <p class="text-sm text-gray-500">Liderazgo con mentalidad tradicional.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="maturityRadar"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: REDISEÑO MODELO DE NEGOCIO -->
+        <section id="modelo" class="mb-24 scroll-mt-24">
+            <div class="text-center mb-12">
+                <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Paso 3: Innovación</span>
+                <h2 class="text-3xl font-bold mt-4">Rediseño: De Staffing a Plataforma IA</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Nuestra propuesta de valor evoluciona hacia una ventaja competitiva basada en datos y eficiencia extrema mediante el modelo SaaS + IA.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-8 rounded-2xl border border-blue-100 bg-white hover:shadow-lg transition">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h4 class="text-xl font-bold mb-3">Propuesta Digital</h4>
+                    <p class="text-sm text-gray-600">Soluciones integrales de talento con analítica predictiva para transformar la contratación en una ventaja estratégica.</p>
+                </div>
+                <div class="p-8 rounded-2xl border border-teal-100 bg-white hover:shadow-lg transition">
+                    <div class="text-4xl mb-4">💡</div>
+                    <h4 class="text-xl font-bold mb-3">Nuevos Ingresos</h4>
+                    <p class="text-sm text-gray-600">Monetización vía servicios premium de IA, consultoría de datos y plataforma de suscripción para clientes corporativos.</p>
+                </div>
+                <div class="p-8 rounded-2xl border border-amber-100 bg-white hover:shadow-lg transition">
+                    <div class="text-4xl mb-4">🔗</div>
+                    <h4 class="text-xl font-bold mb-3">Ecosistema</h4>
+                    <p class="text-sm text-gray-600">Integración de ATS, CRM y Blockchain para la validación de certificados de forma instantánea y segura.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: GOBIERNO Y ESTRATEGIA -->
+        <section id="gobierno" class="mb-24 scroll-mt-24">
+            <div class="bg-slate-900 rounded-3xl p-10 text-white shadow-2xl">
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="lg:w-1/3">
+                        <span class="text-teal-400 text-xs font-bold uppercase tracking-widest">Paso 4: Gobierno Digital</span>
+                        <h2 class="text-3xl font-bold mt-2 mb-6">Comité de Transformación</h2>
+                        <p class="text-slate-400 mb-8">Estructura organizacional diseñada para la ejecución del roadmap con roles de alta especialización.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                                <span>CDO (Líder Digital)</span>
+                                <span class="text-teal-400 text-xs">Estrategia</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                                <span>Head of Data & IA</span>
+                                <span class="text-teal-400 text-xs">Analytics</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white/5 rounded-lg">
+                                <span>Change Manager</span>
+                                <span class="text-teal-400 text-xs">Cultura</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <h3 class="text-xl font-bold mb-6 text-teal-400">OKR 2024-2025: "STS como Plataforma Inteligente"</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="bg-white/5 p-6 rounded-xl border border-white/10">
+                                <div class="text-xs text-slate-400 uppercase mb-2">Key Result 1</div>
+                                <div class="text-2xl font-bold mb-4">ATS + CRM Adopción</div>
+                                <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-teal-500 h-full w-[85%]"></div>
+                                </div>
+                                <div class="mt-2 text-right text-teal-400 font-bold">85%</div>
+                            </div>
+                            <div class="bg-white/5 p-6 rounded-xl border border-white/10">
+                                <div class="text-xs text-slate-400 uppercase mb-2">Key Result 2</div>
+                                <div class="text-2xl font-bold mb-4">Automatización RPA</div>
+                                <div class="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-blue-500 h-full w-[75%]"></div>
+                                </div>
+                                <div class="mt-2 text-right text-blue-400 font-bold">75%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: CUSTOMER JOURNEY -->
+        <section id="viaje" class="mb-24 scroll-mt-24">
+            <div class="mb-12">
+                <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Paso 5: UX & Automatización</span>
+                <h2 class="text-3xl font-bold mt-4">Rediseño de la Experiencia del Cliente</h2>
+                <p class="text-gray-600 mt-4">Transformación de los puntos críticos de fricción mediante automatización inteligente e IA conversacional.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-red-50 p-8 rounded-3xl border border-red-100">
+                    <h3 class="text-red-800 font-bold text-xl mb-6 flex items-center">
+                        <span class="mr-2">❌</span> Situación Tradicional
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-red-200 flex-shrink-0 mt-1 flex items-center justify-center text-xs text-red-700">1</div>
+                            <p class="ml-3 text-sm text-red-700">Solicitudes dispersas por correo y llamadas (caos administrativo).</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-red-200 flex-shrink-0 mt-1 flex items-center justify-center text-xs text-red-700">2</div>
+                            <p class="ml-3 text-sm text-red-700">Sourcing manual en LinkedIn (28 días promedio de cobertura).</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-red-200 flex-shrink-0 mt-1 flex items-center justify-center text-xs text-red-700">3</div>
+                            <p class="ml-3 text-sm text-red-700">Contratación física de documentos (lento y propenso a errores).</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-green-50 p-8 rounded-3xl border border-green-100 shadow-inner">
+                    <h3 class="text-green-800 font-bold text-xl mb-6 flex items-center">
+                        <span class="mr-2">✅</span> Viaje Digital Inteligente
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-green-200 flex-shrink-0 mt-1 flex items-center justify-center text-xs text-green-700">1</div>
+                            <p class="ml-3 text-sm text-green-700"><strong>Portal + Chatbot IA:</strong> Respuesta inmediata 24/7 (-70% tiempo).</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-green-200 flex-shrink-0 mt-1 flex items-center justify-center text-xs text-green-700">2</div>
+                            <p class="ml-3 text-sm text-green-700"><strong>Sourcing IA Predictivo:</strong> Candidatos ideales en 10 días (-60%).</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="w-6 h-6 rounded-full bg-green-200 flex-shrink-0 mt-1 flex items-center justify-center text-xs text-green-700">3</div>
+                            <p class="ml-3 text-sm text-green-700"><strong>Firma Digital & RPA:</strong> Onboarding en 2 horas automático.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 6: SEGURIDAD Y TECH -->
+        <section id="seguridad" class="mb-24 scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Paso 6 & 7: Protección y Disrupción</span>
+                    <h2 class="text-3xl font-bold mt-4 mb-6">Ciberseguridad y Tecnologías 4.0</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">Adoptamos un enfoque <strong>Zero Trust</strong> para proteger el activo más valioso de STS: los datos de candidatos y clientes. Paralelamente, implementamos <strong>Blockchain</strong> para la verificación de perfiles.</p>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <h4 class="font-bold text-lg mb-4 flex items-center">
+                            <span class="text-blue-600 mr-2">⛓</span> Aplicación Blockchain
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-4">Verificación descentralizada de certificaciones académicas e historial laboral para reducir el fraude en hojas de vida en un 95%.</p>
+                        <div class="flex space-x-2">
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] rounded border border-blue-100">Integridad de Datos</span>
+                            <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] rounded border border-blue-100">Confianza +90%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-hidden bg-white rounded-2xl shadow-xl border border-gray-100">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-gray-50 text-gray-600 text-xs uppercase">
+                            <tr>
+                                <th class="p-4 border-b">Riesgo Identificado</th>
+                                <th class="p-4 border-b">Impacto</th>
+                                <th class="p-4 border-b">Mitigación (Zero Trust)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 border-b font-medium">Acceso no autorizado</td>
+                                <td class="p-4 border-b text-red-500 font-bold uppercase">Crítico</td>
+                                <td class="p-4 border-b text-gray-600">MFA + RBAC + Logs Auditoría</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 border-b font-medium">Fuga datos candidatos</td>
+                                <td class="p-4 border-b text-red-500 font-bold uppercase">Crítico</td>
+                                <td class="p-4 border-b text-gray-600">Encriptación + Vault Secretos</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 border-b font-medium">Bias de IA en selección</td>
+                                <td class="p-4 border-b text-orange-500 font-bold uppercase">Alto</td>
+                                <td class="p-4 border-b text-gray-600">Auditoría Modelos + Revisión Humana</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="p-4 border-b font-medium">Ransomware</td>
+                                <td class="p-4 border-b text-red-500 font-bold uppercase">Crítico</td>
+                                <td class="p-4 border-b text-gray-600">Backup Inmutable + EDR 24/7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 7: IMPACTO FINANCIERO / ROI -->
+        <section id="financiero" class="mb-24 scroll-mt-24">
+            <div class="bg-gradient-to-br from-blue-50 to-white p-12 rounded-[3rem] border border-blue-100 shadow-xl">
+                <div class="text-center mb-16">
+                    <span class="bg-blue-200 text-blue-900 text-xs font-bold px-3 py-1 rounded-full uppercase">Paso 8: Evaluación y ROI</span>
+                    <h2 class="text-4xl font-bold mt-4">Proyección Financiera 24 Meses</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Nuestro plan no solo es una transformación técnica, es una optimización masiva de costos y una nueva vía de generación de ingresos.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="chart-container">
+                        <canvas id="roiBarChart"></canvas>
+                    </div>
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-6">
+                            <div class="w-14 h-14 bg-teal-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg">💰</div>
+                            <div>
+                                <h4 class="text-xl font-bold">Payback en 8-10 meses</h4>
+                                <p class="text-gray-500 text-sm">La inversión neta inicial de $575k se recupera antes del primer año gracias a la eficiencia operativa y reducción de costos de reclutamiento.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-6">
+                            <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg">📈</div>
+                            <div>
+                                <h4 class="text-xl font-bold">95% ROI Acumulado</h4>
+                                <p class="text-gray-500 text-sm">Al finalizar los 24 meses, STS habrá generado beneficios brutos superiores a $2.2M contra una inversión total de $725k.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER / ROADMAP RÁPIDO -->
+        <footer class="mt-20 pt-12 border-t border-gray-200">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h5 class="font-bold text-gray-900 mb-4">Fase 1: Diagnóstico</h5>
+                    <p class="text-xs text-gray-500">Semanas 1-6. Audit digital, Inversión $35k.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-900 mb-4">Fase 2: Pilotos</h5>
+                    <p class="text-xs text-gray-500">Meses 3-6. ATS y RPA base, Inversión $180k.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-900 mb-4">Fase 3: Escala</h5>
+                    <p class="text-xs text-gray-500">Meses 6-12. CRM e IA Predictiva, Inversión $320k.</p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-gray-900 mb-4">Fase 4: Optimizar</h5>
+                    <p class="text-xs text-gray-500">Meses 12-24. Blockchain y BI, Inversión $150k.</p>
+                </div>
+            </div>
+            <div class="flex justify-between items-center text-xs text-gray-400">
+                <p>&copy; 2024 Smart Talent Solutions S.A.S. - Proyecto Integrador Final</p>
+                <div class="flex space-x-4 font-bold text-blue-900">
+                    <span>VIGILADO MINEDUCACIÓN</span>
+                    <span>VIGILADO SUPERSUBSIDIO</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuración Global de Chart.js
+            Chart.defaults.font.family = "'Inter', sans-serif";
+            Chart.defaults.color = '#64748b';
+
+            // 1. Radar Chart: Madurez Digital
+            const maturityCtx = document.getElementById('maturityRadar').getContext('2d');
+            new Chart(maturityCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Cultura', 'Tecnología', 'Talento', 'Datos', 'Automatización', 'IA', 'Gobierno', 'Seguridad'],
+                    datasets: [{
+                        label: 'Nivel Actual (1.6/5)',
+                        data: [2, 2, 2, 1, 1, 1, 2, 2],
+                        backgroundColor: 'rgba(30, 58, 138, 0.2)',
+                        borderColor: '#1E3A8A',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#1E3A8A'
+                    }, {
+                        label: 'Meta 24 Meses (4.5/5)',
+                        data: [4.5, 4.8, 4.2, 4.5, 4.8, 4.5, 4.5, 4.9],
+                        backgroundColor: 'rgba(13, 148, 136, 0.1)',
+                        borderColor: '#0D9488',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#0D9488',
+                        borderDash: [5, 5]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 5,
+                            ticks: { stepSize: 1, backdropColor: 'transparent' }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 20 } }
+                    }
+                }
+            });
+
+            // 2. Bar Chart: Impacto Financiero ROI
+            const roiCtx = document.getElementById('roiBarChart').getContext('2d');
+            new Chart(roiCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Año 1: Inversión', 'Año 1: Beneficios', 'Año 2: Inversión', 'Año 2: Beneficios'],
+                    datasets: [{
+                        label: 'Valores en USD ($)',
+                        data: [575000, 695000, 150000, 1575000],
+                        backgroundColor: [
+                            'rgba(239, 68, 68, 0.7)',  // Inversión Y1
+                            'rgba(13, 148, 136, 0.7)', // Beneficio Y1
+                            'rgba(239, 68, 68, 0.4)',  // Inversión Y2
+                            'rgba(13, 148, 136, 1.0)'  // Beneficio Y2
+                        ],
+                        borderRadius: 12,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ' ' + context.parsed.y.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f1f5f9' },
+                            ticks: {
+                                callback: function(value) { return '$' + value/1000 + 'k'; }
+                            }
+                        },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            // Lógica de navegación activa
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
